@@ -125,7 +125,7 @@ export default function InquiryForm({
             href={directWaLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="whatsapp-btn inline-flex items-center justify-center gap-2.5 w-full sm:w-auto min-h-[48px] bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-3.5 px-6 rounded-full shadow-md hover:shadow-lg transition-all"
+            className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto min-h-[48px] bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-3.5 px-6 rounded-full shadow-md hover:shadow-lg transition-all"
           >
             <MessageCircle className="w-5 h-5 fill-current" />
             <span>Connect on WhatsApp Now</span>
@@ -389,7 +389,7 @@ export default function InquiryForm({
           href={directWaLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="whatsapp-btn w-full sm:w-auto min-h-[48px] py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm sm:text-base shadow-md transition-all flex items-center justify-center gap-2"
+          className="w-full sm:w-auto min-h-[48px] py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm sm:text-base shadow-md transition-all flex items-center justify-center gap-2"
         >
           <MessageCircle className="w-5 h-5 fill-current" />
           <span>Inquire on WhatsApp</span>

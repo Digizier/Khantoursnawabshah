@@ -13,46 +13,37 @@
 }
 
 /* =========================================================================
-   SUPER ATTRACTIVE WHATSAPP VIBRATING / WIGGLE / ROTATE & SCALE ANIMATION
+   GENTLE & ELEGANT HEADER WHATSAPP ROTATE & SCALE ANIMATION (ONLY FOR HEADER)
+   Smooth, tasteful rotate & breathing pulse - not too fast, not too extreme
    ========================================================================= */
-@keyframes waWigglePulse {
+@keyframes headerWaGentle {
   0%, 100% {
     transform: scale(1) rotate(0deg);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
   }
-  8% {
-    transform: scale(1.15) rotate(-16deg);
+  15% {
+    transform: scale(1.04) rotate(-4deg);
   }
-  16% {
-    transform: scale(1.18) rotate(16deg);
-    box-shadow: 0 0 20px 6px rgba(37, 211, 102, 0.5);
+  30% {
+    transform: scale(1.05) rotate(4deg);
   }
-  24% {
-    transform: scale(1.15) rotate(-14deg);
+  45% {
+    transform: scale(1.03) rotate(-2.5deg);
   }
-  32% {
-    transform: scale(1.12) rotate(12deg);
+  60% {
+    transform: scale(1.01) rotate(2deg);
   }
-  40% {
-    transform: scale(1.08) rotate(-6deg);
-  }
-  48% {
-    transform: scale(1.04) rotate(4deg);
-  }
-  56% {
+  75%, 100% {
     transform: scale(1) rotate(0deg);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
 
-.whatsapp-btn,
-.whatsapp-attractive {
+.header-wa-btn {
   display: inline-flex !important;
-  animation: waWigglePulse 2s cubic-bezier(0.25, 1, 0.5, 1) infinite !important;
+  animation: headerWaGentle 3s ease-in-out infinite !important;
   transform-origin: center center !important;
 }
 
-/* Shimmer shine effect for attractive buttons */
+/* Shimmer shine effect for header button */
 .shine-effect {
   position: relative;
   overflow: hidden;
@@ -61,18 +52,18 @@
 .shine-effect::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
   background: linear-gradient(
     60deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.4) 50%,
     transparent 70%
   );
   transform: rotate(25deg);
-  animation: shineMove 2.6s infinite;
+  animation: shineMove 3.2s infinite;
   pointer-events: none;
 }
 
@@ -85,9 +76,7 @@
   }
 }
 
-/* =========================================================================
-   CONTINUOUS LEFT-TO-RIGHT & RIGHT-TO-LEFT MARQUEE ANIMATIONS
-   ========================================================================= */
+/* Fast marquee for trust indicator strip */
 @keyframes marqueeLeftToRight {
   0% {
     transform: translateX(-50%);
@@ -97,16 +86,6 @@
   }
 }
 
-@keyframes marqueeRightToLeft {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Fast marquee for trust indicator strip */
 .marquee-track-fast {
   display: flex !important;
   width: max-content !important;
@@ -114,29 +93,8 @@
   will-change: transform;
 }
 
-/* Smooth continuous marquee for destinations */
-.marquee-track {
-  display: flex !important;
-  width: max-content !important;
-  animation: marqueeLeftToRight 28s linear infinite !important;
-  will-change: transform;
-}
-
-/* Smooth marquee for benefits and reviews */
-.marquee-track-slow {
-  display: flex !important;
-  width: max-content !important;
-  animation: marqueeLeftToRight 32s linear infinite !important;
-  will-change: transform;
-}
-
-/* ONLY pause on mouse hover on desktop devices so mobile never freezes */
-@media (hover: hover) and (pointer: fine) {
-  .marquee-track:hover,
-  .marquee-track-fast:hover,
-  .marquee-track-slow:hover {
-    animation-play-state: paused !important;
-  }
+.marquee-track-fast:hover {
+  animation-play-state: paused !important;
 }
 
 @layer utilities {
@@ -146,5 +104,14 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-wa-btn {
+    animation: none !important;
+  }
+  .marquee-track-fast {
+    animation: none !important;
   }
 }

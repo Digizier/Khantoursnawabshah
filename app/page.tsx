@@ -19,6 +19,7 @@ import HeroSlider from "@/components/HeroSlider";
 import DestinationsMarquee from "@/components/DestinationsMarquee";
 import PackageCard from "@/components/PackageCard";
 import InquiryForm from "@/components/InquiryForm";
+import ReviewsMarquee from "@/components/ReviewsMarquee";
 import { TOUR_PACKAGES } from "@/data/tours";
 import { generateWhatsAppLink, DISPLAY_WHATSAPP } from "@/lib/whatsapp";
 
@@ -80,11 +81,11 @@ const REVIEWS_DATA = [
 ];
 
 export default function HomePage() {
-  const featuredPackages = TOUR_PACKAGES.filter((p) => p.featured).slice(0, 4);
+  // Only 2 featured tour packages on the homepage as requested
+  const featuredPackages = TOUR_PACKAGES.filter((p) => p.featured).slice(0, 2);
 
-  // Duplicated benefit & review arrays for seamless infinite marquee loop
+  // Duplicated benefits list for seamless continuous marquee loop
   const duplicatedBenefits = [...TRUST_BENEFITS, ...TRUST_BENEFITS];
-  const duplicatedReviews = [...REVIEWS_DATA, ...REVIEWS_DATA, ...REVIEWS_DATA];
 
   return (
     <div className="w-full">
@@ -94,7 +95,6 @@ export default function HomePage() {
       {/* 2. Top Trust Indicators Strip: Continuous Left-to-Right Moving Marquee */}
       <section className="bg-forest-900 border-b border-forest-800 text-gold-200 py-2.5 sm:py-3 overflow-hidden select-none">
         <div className="marquee-track-fast flex items-center gap-8 sm:gap-12 px-4 text-xs sm:text-sm font-medium">
-          {/* Repeating list for continuous loop */}
           {[1, 2, 3].map((_, setIdx) => (
             <React.Fragment key={setIdx}>
               <div className="flex items-center gap-2 whitespace-nowrap">
@@ -118,7 +118,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Top Northern Destinations Section (Infinite Auto-scroll Marquee, 2 cards visible in mobile row) */}
+      {/* 3. Top Northern Destinations Section (Touch-Draggable + Continuous Auto-scroll) */}
       <section className="py-8 sm:py-12 bg-ivory-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-4 sm:mb-6">
@@ -143,11 +143,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Continuous Auto-scrolling infinite marquee: moving left to right slowly, 2 cards in one row on mobile */}
+        {/* Hand-draggable and continuously auto-scrolling marquee */}
         <DestinationsMarquee />
       </section>
 
-      {/* 4. Featured Tour Packages (2 packages in one row on mobile, 4 on desktop) */}
+      {/* 4. Featured Tour Packages (Exactly 2 Packages on the Screen Page) */}
       <section className="py-8 sm:py-12 bg-white border-t border-b border-gray-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-5 sm:mb-8">
@@ -171,8 +171,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Cards Grid: 2 packages clearly visible on mobile screen without squishing, 4 on desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 items-stretch">
+          {/* Cards Grid: Exactly 2 packages visible on mobile screen without cramping, 2 columns on desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch">
             {featuredPackages.map((tour) => (
               <PackageCard key={tour.id} tour={tour} />
             ))}
@@ -197,7 +197,7 @@ export default function HomePage() {
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-btn shine-effect px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs sm:text-sm font-bold transition-all whitespace-nowrap shadow-sm border border-green-300/40"
+              className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs sm:text-sm font-bold transition-all whitespace-nowrap shadow-sm border border-green-300/40"
             >
               Get Custom Quote on WhatsApp
             </a>
@@ -205,7 +205,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Trust Section: "Trusted Northern Tour Experience from Sindh" (Continuous Left-to-Right Marquee with 1.5 cards visible on mobile) */}
+      {/* 5. Trust Section: "Trusted Northern Tour Experience from Sindh" */}
       <section className="py-8 sm:py-12 bg-ivory-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <div className="text-center max-w-2xl mx-auto">
@@ -223,7 +223,7 @@ export default function HomePage() {
 
         {/* Continuous Left-to-Right Moving Track with 1.5 visible boxes on mobile screen */}
         <div className="w-full relative overflow-hidden py-2">
-          <div className="marquee-track flex gap-4 sm:gap-6 px-4">
+          <div className="marquee-track-fast flex gap-4 sm:gap-6 px-4">
             {duplicatedBenefits.map((item, idx) => {
               const Icon = item.icon;
               return (
@@ -476,7 +476,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. Verified Reviews (Continuous Left-to-Right Moving Marquee) */}
+      {/* 8. Verified Reviews (Touch-Draggable + Continuous Auto-scroll) */}
       <section className="py-8 sm:py-12 bg-ivory-100 border-t border-gray-200/80 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-5 sm:mb-7">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -510,37 +510,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Continuous Left-to-Right Moving Reviews Track */}
-        <div className="w-full relative overflow-hidden py-2">
-          <div className="marquee-track flex gap-4 sm:gap-5 px-4">
-            {duplicatedReviews.map((rev, idx) => (
-              <div
-                key={`${rev.name}-${idx}`}
-                className="w-[82vw] sm:w-[50vw] md:w-96 flex-shrink-0 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-subtle flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-1 text-yellow-500 mb-2">
-                    {[...Array(rev.stars)].map((_, s) => (
-                      <Star key={s} className="w-3.5 h-3.5 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-xs sm:text-sm text-gray-700 italic leading-relaxed line-clamp-3 mb-3">
-                    "{rev.text}"
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 border-t border-gray-100 pt-2.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-forest-100 text-forest-800 font-bold text-xs flex items-center justify-center flex-shrink-0">
-                    {rev.initials}
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-gray-900">{rev.name}</div>
-                    <div className="text-[10px] text-gray-500">{rev.tag}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Hand-draggable and continuously auto-scrolling reviews marquee */}
+        <ReviewsMarquee reviews={REVIEWS_DATA} />
       </section>
 
       {/* 9. Booking & Inquiry Form Anchor Section */}
@@ -568,7 +539,7 @@ export default function HomePage() {
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-btn shine-effect inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-lg transition-all border border-green-300/40"
+              className="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl shadow-lg transition-all border border-green-300/40"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
               <span>Plan Your Trip on WhatsApp</span>

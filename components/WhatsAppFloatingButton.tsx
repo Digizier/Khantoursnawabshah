@@ -26,7 +26,7 @@ export default function WhatsAppFloatingButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Direct WhatsApp Chat with Khan Tours Nawabshah"
-        className="whatsapp-btn shine-effect min-w-[50px] min-h-[50px] w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xl border border-green-300/40 transition-all focus:outline-none focus:ring-4 focus:ring-green-300/50"
+        className="min-w-[50px] min-h-[50px] w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xl border border-green-300/40 transition-all hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-green-300/50"
       >
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-[#25D366]" />
       </a>

@@ -83,7 +83,7 @@ export default function Header() {
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="whatsapp-btn shine-effect flex items-center gap-1.5 text-white bg-[#25D366] px-3 py-1 rounded-full text-xs font-semibold hover:bg-[#20ba5a] transition-all shadow-sm"
+              className="header-wa-btn shine-effect flex items-center gap-1.5 text-white bg-[#25D366] px-3.5 py-1 rounded-full text-xs font-semibold hover:bg-[#20ba5a] transition-all shadow-sm"
             >
               <MessageCircle className="w-3.5 h-3.5 fill-current" />
               <span>WhatsApp Direct</span>
@@ -159,13 +159,13 @@ export default function Header() {
               Plan Trip
             </Link>
 
-            {/* Rotating + Scaling Attractive WhatsApp Button */}
+            {/* Header WhatsApp Button: gentle rotating & scaling animation */}
             <a
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
-              className="whatsapp-btn shine-effect inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-lg transition-all cursor-pointer border border-green-300/40"
+              className="header-wa-btn shine-effect inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-lg transition-all cursor-pointer border border-green-300/40"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.222-.553-1.849-.766-3.033-2.656-3.125-2.779-.093-.122-.734-.978-.734-1.865 0-.887.464-1.32.629-1.498.165-.178.36-.222.48-.222.12 0 .241.002.346.006.11.005.257-.042.402.308.148.359.508 1.238.552 1.328.044.09.073.196.015.313-.058.118-.088.192-.175.294-.087.102-.183.228-.262.306-.088.088-.18.183-.077.36.103.177.458.756.983 1.224.675.602 1.244.788 1.421.876.177.088.281.074.385-.045.105-.119.449-.523.569-.702.12-.179.24-.149.404-.089.165.059 1.045.492 1.225.582.18.09.3.135.345.21.045.076.045.441-.099.846z" />
@@ -175,20 +175,21 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Mobile Actions: Box Round-Edge Rotating WhatsApp + Professional Menu Button */}
-          <div className="flex items-center gap-2.5 xl:hidden">
-            {/* Attractive Rounded Box WhatsApp Button with Rotate/Scale & Shine */}
+          {/* Mobile Actions: Scaled Left-Side Box WhatsApp with Gentle Rotate & Luxury Menu Button */}
+          <div className="flex items-center gap-2 xl:hidden">
+            {/* Header WhatsApp Button: Scaled wider to the left with icon + label */}
             <a
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp Us"
-              className="whatsapp-btn shine-effect min-w-[42px] min-h-[42px] w-[42px] h-[42px] rounded-xl bg-[#25D366] text-white flex items-center justify-center shadow-md border border-green-300/40 focus:outline-none"
+              aria-label="Chat on WhatsApp"
+              className="header-wa-btn shine-effect h-[40px] px-3.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center gap-1.5 shadow-md border border-green-300/40 focus:outline-none"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.222-.553-1.849-.766-3.033-2.656-3.125-2.779-.093-.122-.734-.978-.734-1.865 0-.887.464-1.32.629-1.498.165-.178.36-.222.48-.222.12 0 .241.002.346.006.11.005.257-.042.402.308.148.359.508 1.238.552 1.328.044.09.073.196.015.313-.058.118-.088.192-.175.294-.087.102-.183.228-.262.306-.088.088-.18.183-.077.36.103.177.458.756.983 1.224.675.602 1.244.788 1.421.876.177.088.281.074.385-.045.105-.119.449-.523.569-.702.12-.179.24-.149.404-.089.165.059 1.045.492 1.225.582.18.09.3.135.345.21.045.076.045.441-.099.846z" />
                 <path d="M12 2C6.477 2 2 6.477 2 12c0 1.891.526 3.662 1.438 5.178L2.054 22l4.98-1.306C8.484 21.536 10.187 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.637 0-3.15-.494-4.417-1.34l-.317-.212-2.955.775.789-2.883-.233-.371C4.004 14.697 3.5 13.393 3.5 12c0-4.687 3.813-8.5 8.5-8.5s8.5 3.813 8.5 8.5-3.813 8.5-8.5 8.5z" />
               </svg>
+              <span className="text-xs font-bold font-sans tracking-wide">WhatsApp</span>
             </a>
 
             {/* Professional Luxury Rounded Menu Button */}
@@ -328,13 +329,13 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Drawer Footer Contact with Attractive Rotating WhatsApp */}
+            {/* Drawer Footer Contact */}
             <div className="p-3.5 border-t border-forest-800 bg-forest-900/50 space-y-2.5">
               <a
                 href={generateWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="whatsapp-btn shine-effect w-full min-h-[46px] flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-3 rounded-xl text-sm shadow-md border border-green-300/40"
+                className="w-full min-h-[46px] flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-3 rounded-xl text-sm shadow-md border border-green-300/40"
               >
                 <MessageCircle className="w-5 h-5 fill-current" />
                 <span>Chat on WhatsApp</span>

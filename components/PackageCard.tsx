@@ -87,7 +87,7 @@ export default function PackageCard({ tour }: PackageCardProps) {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="whatsapp-btn shine-effect flex-1 py-1.5 px-2 sm:py-2 sm:px-3 text-[10px] sm:text-xs font-semibold text-center text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-lg transition-colors shadow-sm flex items-center justify-center gap-1 border border-green-300/30"
+            className="flex-1 py-1.5 px-2 sm:py-2 sm:px-3 text-[10px] sm:text-xs font-semibold text-center text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-lg transition-colors shadow-sm flex items-center justify-center gap-1 border border-green-300/30"
           >
             <MessageCircle className="w-3 h-3 fill-current" />
             <span>WhatsApp</span>
