@@ -12,6 +12,56 @@
   }
 }
 
+/* WhatsApp Pulse Animation */
+@keyframes waPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.whatsapp-btn {
+  animation: waPulse 1.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Infinite Destinations CSS Marquee: Left-to-Right & Right-to-Left Continuous Loops */
+@keyframes marqueeScrollLTR {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marqueeScrollRTL {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollLTR 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover,
+.marquee-track:active,
+.marquee-track:focus-within {
+  animation-play-state: paused !important;
+}
+
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -34,5 +84,12 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .whatsapp-btn {
+    animation: none !important;
+  }
+  .marquee-track {
+    animation: none !important;
+    overflow-x: auto;
   }
 }

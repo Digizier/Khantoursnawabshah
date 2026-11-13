@@ -13,8 +13,6 @@ import {
   MessageCircle,
   Phone,
   Star,
-  CheckCircle,
-  Camera,
   ExternalLink,
 } from "lucide-react";
 import HeroSlider from "@/components/HeroSlider";
@@ -22,7 +20,6 @@ import DestinationsMarquee from "@/components/DestinationsMarquee";
 import PackageCard from "@/components/PackageCard";
 import InquiryForm from "@/components/InquiryForm";
 import { TOUR_PACKAGES } from "@/data/tours";
-import { DESTINATIONS } from "@/data/destinations";
 import { generateWhatsAppLink, DISPLAY_WHATSAPP } from "@/lib/whatsapp";
 
 export default function HomePage() {
@@ -34,7 +31,7 @@ export default function HomePage() {
       <HeroSlider />
 
       {/* 2. Top Trust Indicators Strip */}
-      <section className="bg-forest-900 border-b border-forest-800 text-gold-200 py-3 sm:py-4 px-4 sm:px-6">
+      <section className="bg-forest-900 border-b border-forest-800 text-gold-200 py-3.5 sm:py-4 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-4 text-xs sm:text-sm font-medium">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-gold-400" />
@@ -55,8 +52,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. Popular Destinations Section */}
-      <section className="py-10 sm:py-14 bg-ivory-100">
+      {/* 3. Top Northern Destinations Section (Infinite Auto-scroll Marquee) */}
+      <section className="py-[60px] bg-ivory-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6">
             <div>
@@ -80,12 +77,12 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Continuous Auto-scrolling interactive marquee */}
+        {/* Continuous Auto-scrolling infinite marquee with hover/touch pause */}
         <DestinationsMarquee />
       </section>
 
-      {/* 4. Featured Tour Packages (2-col mobile, 4-col desktop compact) */}
-      <section className="py-12 sm:py-16 bg-white border-t border-b border-gray-200/80">
+      {/* 4. Featured Tour Packages (1-col mobile, 2-col tablet, 4-col desktop) */}
+      <section className="py-[60px] bg-white border-t border-b border-gray-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
             <div>
@@ -108,23 +105,23 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Cards Grid: 2 columns on mobile, 4 on desktop */}
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+          {/* Cards Grid: 1 column on mobile, 2 on tablet, 4 on desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             {featuredPackages.map((tour) => (
               <PackageCard key={tour.id} tour={tour} />
             ))}
           </div>
 
           {/* Notice on Quotation & Zero Prices */}
-          <div className="mt-8 p-4 rounded-xl bg-ivory-100 border border-gold-300/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <div className="mt-8 p-4 rounded-2xl bg-ivory-100 border border-gold-300/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-forest-900 text-gold-400 flex items-center justify-center flex-shrink-0">
                 <Compass className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-xs sm:text-sm font-bold text-gray-900">
+                <h3 className="text-xs sm:text-sm font-bold text-gray-900">
                   Custom Group & Family Quotations
-                </h4>
+                </h3>
                 <p className="text-[11px] sm:text-xs text-gray-600">
                   We customize tour plans according to your family size, vehicle choice, and preferred hotels.
                 </p>
@@ -134,7 +131,7 @@ export default function HomePage() {
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white text-xs font-bold transition-colors whitespace-nowrap shadow-sm"
+              className="whatsapp-btn px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs sm:text-sm font-bold transition-colors whitespace-nowrap shadow-sm"
             >
               Get Custom Quote on WhatsApp
             </a>
@@ -142,8 +139,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Why Choose Khan Tours Nawabshah */}
-      <section className="py-12 sm:py-16 bg-ivory-50">
+      {/* 5. Trust Section: Why Travel With Us (3-Column Desktop Grid) */}
+      <section className="py-[60px] bg-ivory-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-forest-700 uppercase tracking-widest block mb-1">
@@ -157,10 +154,11 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {/* 3-Column Desktop Grid with Uniform Cards & Aligned Text */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {/* Benefit 1 */}
-            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle hover:border-gold-400/60 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4 flex-shrink-0">
                 <MapPin className="w-6 h-6 text-forest-700" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">
@@ -172,8 +170,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 2 */}
-            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle hover:border-gold-400/60 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4 flex-shrink-0">
                 <Users className="w-6 h-6 text-forest-700" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">
@@ -185,8 +183,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 3 */}
-            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle hover:border-gold-400/60 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4 flex-shrink-0">
                 <Car className="w-6 h-6 text-forest-700" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">
@@ -198,8 +196,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 4 */}
-            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle hover:border-gold-400/60 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4 flex-shrink-0">
                 <ShieldCheck className="w-6 h-6 text-forest-700" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">
@@ -211,8 +209,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 5 */}
-            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle hover:border-gold-400/60 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4 flex-shrink-0">
                 <Compass className="w-6 h-6 text-forest-700" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">
@@ -224,8 +222,8 @@ export default function HomePage() {
             </div>
 
             {/* Benefit 6 */}
-            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-subtle hover:border-gold-400/60 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4">
+            <div className="bg-white p-6 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start">
+              <div className="w-12 h-12 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-4 flex-shrink-0">
                 <Phone className="w-6 h-6 text-forest-700" />
               </div>
               <h3 className="text-base font-bold text-gray-900 mb-2">
@@ -239,8 +237,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. Real Services Section */}
-      <section className="py-12 sm:py-16 bg-forest-950 text-white">
+      {/* 6. Real Travel Services Section */}
+      <section className="py-[60px] bg-forest-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold text-gold-400 uppercase tracking-widest block mb-1">
@@ -323,7 +321,7 @@ export default function HomePage() {
                 Hotel Bookings
               </h3>
               <p className="text-[10px] text-gray-400 mt-1 hidden sm:block">
-                Verified resort reservations
+                Verified resort stays
               </p>
             </div>
 
@@ -343,7 +341,7 @@ export default function HomePage() {
       </section>
 
       {/* 7. Authentic Tour Moments & Founder Profile */}
-      <section className="py-12 sm:py-16 bg-white">
+      <section className="py-[60px] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column: Founder & Story */}
@@ -362,21 +360,21 @@ export default function HomePage() {
                 With years of hands-on experience guiding tour parties through Pakistan's rugged northern terrains, Mohammed Murad Khan personally coordinates group journeys, road halts, security clearances, and accommodation standards.
               </p>
 
-              <blockquote className="p-4 rounded-xl bg-ivory-100 border-l-4 border-gold-400 text-xs sm:text-sm italic text-gray-700">
+              <blockquote className="p-4 rounded-2xl bg-ivory-100 border-l-4 border-gold-400 text-xs sm:text-sm italic text-gray-700">
                 "Our mission is simple: to make the awe-inspiring beauty of Northern Pakistan accessible, safe, and comfortable for every family, student, and couple traveling from Sindh."
               </blockquote>
 
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <a
                   href="tel:+923002870384"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-forest-900 hover:bg-forest-800 text-white text-xs font-bold transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest-900 hover:bg-forest-800 text-white text-xs font-bold transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-gold-400" />
                   <span>Call: {DISPLAY_WHATSAPP}</span>
                 </a>
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-gray-300 hover:border-forest-700 text-gray-700 text-xs font-semibold transition-colors"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-gray-300 hover:border-forest-700 text-gray-700 text-xs font-semibold transition-colors"
                 >
                   <span>Read Our Full Story</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -385,8 +383,8 @@ export default function HomePage() {
             </div>
 
             {/* Right Column: Genuine Photos Grid */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-subtle bg-forest-950">
+            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-subtle bg-forest-950">
                 <Image
                   src="/images/founder/mohammed-murad-khan-snowfall.webp"
                   alt="Mohammed Murad Khan in snowfall"
@@ -394,12 +392,12 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-[10px] text-white font-medium">
+                <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] text-white font-medium">
                   Snowfall Experience
                 </div>
               </div>
 
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-subtle bg-forest-950">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-subtle bg-forest-950">
                 <Image
                   src="/images/destinations/taobutt-neelum-valley.webp"
                   alt="Taobutt Neelum Valley sign"
@@ -407,12 +405,12 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-[10px] text-white font-medium">
+                <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] text-white font-medium">
                   Taobutt, Neelum Valley
                 </div>
               </div>
 
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-subtle bg-forest-950">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-subtle bg-forest-950">
                 <Image
                   src="/images/destinations/ratti-gali-lake.webp"
                   alt="Ratti Gali glacial lake"
@@ -420,12 +418,12 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-[10px] text-white font-medium">
+                <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] text-white font-medium">
                   Ratti Gali Glacial Lake
                 </div>
               </div>
 
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-subtle bg-forest-950">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-subtle bg-forest-950">
                 <Image
                   src="/images/tours/4x4-mountain-jeep-safari.webp"
                   alt="4x4 mountain safari jeep"
@@ -433,12 +431,12 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-[10px] text-white font-medium">
+                <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] text-white font-medium">
                   4x4 Mountain Jeep Safari
                 </div>
               </div>
 
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-subtle bg-forest-950">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-subtle bg-forest-950">
                 <Image
                   src="/images/destinations/hunza-passu-cones.webp"
                   alt="Passu Cones in Hunza"
@@ -446,12 +444,12 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-[10px] text-white font-medium">
+                <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] text-white font-medium">
                   Passu Cones, Hunza
                 </div>
               </div>
 
-              <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-subtle bg-forest-950">
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-subtle bg-forest-950">
                 <Image
                   src="/images/destinations/babusar-pass-snow.webp"
                   alt="Babusar Top snowy pass"
@@ -459,7 +457,7 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/80 to-transparent text-[10px] text-white font-medium">
+                <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/80 to-transparent text-[11px] text-white font-medium">
                   Babusar Pass (4,173m)
                 </div>
               </div>
@@ -469,7 +467,7 @@ export default function HomePage() {
       </section>
 
       {/* 8. Verified Reviews & Google Feedback */}
-      <section className="py-12 sm:py-16 bg-ivory-100 border-t border-gray-200/80">
+      <section className="py-[60px] bg-ivory-100 border-t border-gray-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div>
@@ -572,14 +570,14 @@ export default function HomePage() {
       </section>
 
       {/* 9. Booking & Inquiry Form Anchor Section */}
-      <section id="inquiry" className="py-12 sm:py-16 bg-white border-t border-gray-200/80">
+      <section id="inquiry" className="py-[60px] bg-white border-t border-gray-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <InquiryForm />
         </div>
       </section>
 
       {/* 10. Final Call to Action Banner */}
-      <section className="py-12 sm:py-16 bg-gradient-to-r from-forest-950 via-forest-900 to-forest-950 text-white text-center relative overflow-hidden">
+      <section className="py-[60px] bg-gradient-to-r from-forest-950 via-forest-900 to-forest-950 text-white text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
           <span className="text-xs font-bold text-gold-400 uppercase tracking-widest block">
             Ready for the Mountains?
@@ -596,9 +594,9 @@ export default function HomePage() {
               href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-lg hover:shadow-green-900/50 transition-all"
+              className="whatsapp-btn inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-lg transition-all"
             >
-              <MessageCircle className="w-4 h-4 fill-white text-green-600" />
+              <MessageCircle className="w-4 h-4 fill-current" />
               <span>Plan Your Trip on WhatsApp</span>
             </a>
             <a

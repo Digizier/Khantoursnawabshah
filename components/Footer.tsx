@@ -5,22 +5,21 @@ import {
   MapPin,
   Phone,
   Mail,
-  MessageCircle,
   ExternalLink,
   Star,
   ShieldCheck,
-  Heart,
 } from "lucide-react";
-import { generateWhatsAppLink, DISPLAY_WHATSAPP } from "@/lib/whatsapp";
+import { DISPLAY_WHATSAPP } from "@/lib/whatsapp";
+import SocialIcons from "@/components/SocialIcons";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-forest-950 text-gray-300 border-t border-forest-900 pt-10 pb-20 lg:pb-10">
+    <footer className="bg-forest-950 text-gray-300 border-t border-forest-900 py-[60px] pb-24 lg:pb-[60px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Grid: 4 Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-8 border-b border-forest-900/80">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10 border-b border-forest-900/80">
           {/* Column 1: Brand & About */}
           <div className="space-y-4">
             <Link href="/" className="inline-flex items-center gap-3">
@@ -57,10 +56,10 @@ export default function Footer() {
 
           {/* Column 2: Quick Links & Services */}
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5 border-l-2 border-gold-400 pl-2">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-400 pl-2">
               Tour Services
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <Link
                   href="/family-tours"
@@ -114,10 +113,10 @@ export default function Footer() {
 
           {/* Column 3: Top Destinations */}
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5 border-l-2 border-gold-400 pl-2">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-400 pl-2">
               Top Destinations
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <Link
                   href="/destinations/hunza-valley"
@@ -169,9 +168,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Social Ecosystem */}
-          <div className="space-y-3.5">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-3.5 border-l-2 border-gold-400 pl-2">
+          {/* Column 4: Contact & Real Brand Social Ecosystem */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-gold-400 pl-2">
               Get in Touch
             </h3>
             <div className="space-y-2.5 text-xs sm:text-sm">
@@ -185,7 +184,7 @@ export default function Footer() {
                   href="tel:+923002870384"
                   className="text-gray-300 hover:text-gold-300 transition-colors font-medium"
                 >
-                  0300-2870384 (WhatsApp)
+                  {DISPLAY_WHATSAPP} (WhatsApp)
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
@@ -223,58 +222,17 @@ export default function Footer() {
                   <Star className="w-3.5 h-3.5 fill-current" />
                   <Star className="w-3.5 h-3.5 fill-current" />
                 </div>
-                <span className="font-semibold text-white">Review Us on Google</span>
+                <span className="font-semibold text-white">Review on Google</span>
                 <ExternalLink className="w-3 h-3 text-gray-400" />
               </a>
             </div>
 
-            {/* Social Channels */}
-            <div className="pt-1 flex items-center gap-2.5">
-              <a
-                href="https://www.facebook.com/share/1FLwVYqaTP/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook Page"
-                className="w-8 h-8 rounded-full bg-forest-900 hover:bg-gold-500 hover:text-forest-950 text-gray-300 flex items-center justify-center transition-all duration-200"
-              >
-                <span className="font-bold text-xs">f</span>
-              </a>
-              <a
-                href="https://www.instagram.com/khantoursnawabshah"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram Profile"
-                className="w-8 h-8 rounded-full bg-forest-900 hover:bg-gold-500 hover:text-forest-950 text-gray-300 flex items-center justify-center transition-all duration-200"
-              >
-                <span className="font-bold text-xs">ig</span>
-              </a>
-              <a
-                href="https://www.tiktok.com/@mohammed.murad.kh4"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="TikTok Account"
-                className="w-8 h-8 rounded-full bg-forest-900 hover:bg-gold-500 hover:text-forest-950 text-gray-300 flex items-center justify-center transition-all duration-200"
-              >
-                <span className="font-bold text-xs">tt</span>
-              </a>
-              <a
-                href="https://youtube.com/@mohammadmuradkhan6095"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube Channel"
-                className="w-8 h-8 rounded-full bg-forest-900 hover:bg-gold-500 hover:text-forest-950 text-gray-300 flex items-center justify-center transition-all duration-200"
-              >
-                <span className="font-bold text-xs">yt</span>
-              </a>
-              <a
-                href="https://maps.app.goo.gl/zEqHLyuVoGfpGyUr7"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Google Maps"
-                className="w-8 h-8 rounded-full bg-forest-900 hover:bg-gold-500 hover:text-forest-950 text-gray-300 flex items-center justify-center transition-all duration-200"
-              >
-                <MapPin className="w-4 h-4" />
-              </a>
+            {/* Real Brand SVG Social Media Channels */}
+            <div className="pt-2">
+              <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">
+                Official Channels
+              </div>
+              <SocialIcons />
             </div>
           </div>
         </div>

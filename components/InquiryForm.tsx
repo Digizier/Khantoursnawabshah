@@ -78,7 +78,6 @@ export default function InquiryForm({
 
     setLoading(true);
 
-    // Save locally for reliability
     try {
       const existing = JSON.parse(localStorage.getItem("khan_tours_inquiries") || "[]");
       existing.push({
@@ -90,7 +89,6 @@ export default function InquiryForm({
       // Ignore storage errors in private browsing
     }
 
-    // Simulate safe processing time
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
@@ -116,7 +114,7 @@ export default function InquiryForm({
         <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
           Inquiry Received Successfully!
         </h3>
-        <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600 max-w-md mx-auto leading-relaxed">
           Thank you, <strong className="text-gray-900">{formData.fullName}</strong>.
           Mohammed Murad Khan and our travel team will review your requirements for{" "}
           <strong className="text-forest-800">{formData.destination}</strong>.
@@ -127,9 +125,9 @@ export default function InquiryForm({
             href={directWaLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-md hover:shadow-lg transition-all"
+            className="whatsapp-btn inline-flex items-center justify-center gap-2.5 w-full sm:w-auto min-h-[48px] bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-3.5 px-6 rounded-full shadow-md hover:shadow-lg transition-all"
           >
-            <MessageCircle className="w-5 h-5 fill-white text-green-600" />
+            <MessageCircle className="w-5 h-5 fill-current" />
             <span>Connect on WhatsApp Now</span>
           </a>
           <p className="text-xs text-gray-500 mt-2">
@@ -163,24 +161,24 @@ export default function InquiryForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-200/90 shadow-card space-y-4 text-left"
+      className="bg-white rounded-2xl p-5 sm:p-8 border border-gray-200/90 shadow-card space-y-4 sm:space-y-5 text-left w-full"
       noValidate
     >
       <div className="border-b border-gray-100 pb-3">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
           Plan Your Tour with Khan Tours
         </h3>
-        <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
+        <p className="text-xs sm:text-sm text-gray-500 mt-1">
           Share your travel preferences and our Nawabshah team will organize a tailored itinerary.
         </p>
       </div>
 
-      {/* Row 1: Name and Phone */}
+      {/* Row 1: Name and Phone (Labels above, min 16px font to prevent iOS zoom, 44px min height) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="inquiry-fullName" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <User className="w-3.5 h-3.5 text-forest-700" />
-            Full Name <span className="text-red-500">*</span>
+          <label htmlFor="inquiry-fullName" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <User className="w-4 h-4 text-forest-700" />
+            <span>Full Name <span className="text-red-500">*</span></span>
           </label>
           <input
             id="inquiry-fullName"
@@ -191,24 +189,24 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, fullName: e.target.value })
             }
-            className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-gray-900 focus:outline-none focus:ring-2 ${
+            className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-gray-900 focus:outline-none focus:ring-2 ${
               errors.fullName
                 ? "border-red-300 focus:ring-red-200 bg-red-50/20"
                 : "border-gray-300 focus:ring-forest-200 focus:border-forest-700"
             }`}
           />
           {errors.fullName && (
-            <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1">
-              <AlertCircle className="w-3 h-3" />
-              {errors.fullName}
+            <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+              <AlertCircle className="w-3.5 h-3.5" />
+              <span>{errors.fullName}</span>
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="inquiry-phone" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <Phone className="w-3.5 h-3.5 text-forest-700" />
-            WhatsApp / Mobile Number <span className="text-red-500">*</span>
+          <label htmlFor="inquiry-phone" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <Phone className="w-4 h-4 text-forest-700" />
+            <span>WhatsApp / Mobile Number <span className="text-red-500">*</span></span>
           </label>
           <input
             id="inquiry-phone"
@@ -219,16 +217,16 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, phone: e.target.value })
             }
-            className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-gray-900 focus:outline-none focus:ring-2 ${
+            className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-gray-900 focus:outline-none focus:ring-2 ${
               errors.phone
                 ? "border-red-300 focus:ring-red-200 bg-red-50/20"
                 : "border-gray-300 focus:ring-forest-200 focus:border-forest-700"
             }`}
           />
           {errors.phone && (
-            <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1">
-              <AlertCircle className="w-3 h-3" />
-              {errors.phone}
+            <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+              <AlertCircle className="w-3.5 h-3.5" />
+              <span>{errors.phone}</span>
             </p>
           )}
         </div>
@@ -237,9 +235,9 @@ export default function InquiryForm({
       {/* Row 2: Email & Destination */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="inquiry-email" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <Mail className="w-3.5 h-3.5 text-forest-700" />
-            Email Address <span className="text-gray-400 font-normal">(Optional)</span>
+          <label htmlFor="inquiry-email" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <Mail className="w-4 h-4 text-forest-700" />
+            <span>Email Address <span className="text-gray-400 font-normal">(Optional)</span></span>
           </label>
           <input
             id="inquiry-email"
@@ -250,24 +248,24 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-            className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-gray-900 focus:outline-none focus:ring-2 ${
+            className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-gray-900 focus:outline-none focus:ring-2 ${
               errors.email
                 ? "border-red-300 focus:ring-red-200 bg-red-50/20"
                 : "border-gray-300 focus:ring-forest-200 focus:border-forest-700"
             }`}
           />
           {errors.email && (
-            <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1">
-              <AlertCircle className="w-3 h-3" />
-              {errors.email}
+            <p className="text-xs text-red-600 mt-1 flex items-center gap-1">
+              <AlertCircle className="w-3.5 h-3.5" />
+              <span>{errors.email}</span>
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="inquiry-destination" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-forest-700" />
-            Selected Destination
+          <label htmlFor="inquiry-destination" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <MapPin className="w-4 h-4 text-forest-700" />
+            <span>Selected Destination</span>
           </label>
           <select
             id="inquiry-destination"
@@ -276,7 +274,7 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, destination: e.target.value })
             }
-            className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
+            className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-gray-300 text-base sm:text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
           >
             {DESTINATIONS.map((dest) => (
               <option key={dest.id} value={dest.name}>
@@ -288,12 +286,12 @@ export default function InquiryForm({
         </div>
       </div>
 
-      {/* Row 3: Tour Category & Travellers & Date */}
+      {/* Row 3: Tour Category, Travellers & Date */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label htmlFor="inquiry-tourCategory" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <Compass className="w-3.5 h-3.5 text-forest-700" />
-            Tour Category
+          <label htmlFor="inquiry-tourCategory" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-forest-700" />
+            <span>Tour Category</span>
           </label>
           <select
             id="inquiry-tourCategory"
@@ -302,7 +300,7 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, tourCategory: e.target.value })
             }
-            className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
+            className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-gray-300 text-base sm:text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
           >
             <option value="Family Tour">Family Tour</option>
             <option value="Group Tour">Group Tour</option>
@@ -312,9 +310,9 @@ export default function InquiryForm({
         </div>
 
         <div>
-          <label htmlFor="inquiry-travellers" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <Users className="w-3.5 h-3.5 text-forest-700" />
-            Travellers
+          <label htmlFor="inquiry-travellers" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <Users className="w-4 h-4 text-forest-700" />
+            <span>Travellers</span>
           </label>
           <select
             id="inquiry-travellers"
@@ -323,7 +321,7 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, travellers: e.target.value })
             }
-            className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
+            className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-gray-300 text-base sm:text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
           >
             <option value="1">1 Person</option>
             <option value="2">2 Persons (Couple)</option>
@@ -334,9 +332,9 @@ export default function InquiryForm({
         </div>
 
         <div>
-          <label htmlFor="inquiry-travelDate" className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-forest-700" />
-            Preferred Date
+          <label htmlFor="inquiry-travelDate" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
+            <Calendar className="w-4 h-4 text-forest-700" />
+            <span>Preferred Date</span>
           </label>
           <input
             id="inquiry-travelDate"
@@ -346,14 +344,15 @@ export default function InquiryForm({
             onChange={(e) =>
               setFormData({ ...formData, travelDate: e.target.value })
             }
-            className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
-          />
+            className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-gray-300 text-base sm:text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
+          >
+          </input>
         </div>
       </div>
 
       {/* Row 4: Message / Requirements */}
       <div>
-        <label htmlFor="inquiry-message" className="block text-xs font-semibold text-gray-700 mb-1">
+        <label htmlFor="inquiry-message" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1.5">
           Special Requirements / Notes <span className="text-gray-400 font-normal">(Optional)</span>
         </label>
         <textarea
@@ -365,16 +364,16 @@ export default function InquiryForm({
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           }
-          className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
+          className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-base sm:text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-forest-200 focus:border-forest-700"
         />
       </div>
 
-      {/* Submit Buttons */}
-      <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+      {/* Submit Buttons: 100% full-width on mobile, min 48px height */}
+      <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
         <button
           type="submit"
           disabled={loading}
-          className="w-full sm:flex-1 py-3 px-6 rounded-full bg-forest-900 hover:bg-forest-800 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+          className="w-full sm:flex-1 min-h-[48px] py-3.5 px-6 rounded-full bg-forest-900 hover:bg-forest-800 text-white font-bold text-sm sm:text-base shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {loading ? (
             <span>Processing...</span>
@@ -390,9 +389,9 @@ export default function InquiryForm({
           href={directWaLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full sm:w-auto py-3 px-6 rounded-full bg-green-600 hover:bg-green-700 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2"
+          className="whatsapp-btn w-full sm:w-auto min-h-[48px] py-3.5 px-6 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm sm:text-base shadow-md transition-all flex items-center justify-center gap-2"
         >
-          <MessageCircle className="w-4 h-4 fill-white text-green-600" />
+          <MessageCircle className="w-5 h-5 fill-current" />
           <span>Inquire on WhatsApp</span>
         </a>
       </div>

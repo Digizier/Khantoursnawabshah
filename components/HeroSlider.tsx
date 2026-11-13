@@ -53,7 +53,7 @@ export default function HeroSlider() {
   return (
     <section className="relative w-full bg-forest-950 overflow-hidden">
       {/* Slides Container */}
-      <div className="relative w-full h-[520px] sm:h-[580px] md:h-[640px] lg:h-[700px]">
+      <div className="relative w-full h-[560px] sm:h-[600px] md:h-[650px] lg:h-[700px]">
         {SLIDES.map((slide, index) => {
           const isActive = index === currentSlide;
           return (
@@ -74,35 +74,35 @@ export default function HeroSlider() {
               />
 
               {/* Multi-layer Gradient Overlays for High Legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/60 to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/65 to-black/35" />
               <div className="absolute inset-0 bg-gradient-to-r from-forest-950/90 via-forest-950/40 to-transparent" />
 
               {/* Hero Slide Content */}
               <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-end pb-16 sm:pb-20 md:pb-24">
-                <div className="max-w-2xl text-left space-y-3 sm:space-y-4">
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest-900/90 border border-gold-400/40 text-gold-300 text-xs sm:text-sm font-semibold backdrop-blur-md">
+                <div className="max-w-2xl text-left space-y-3.5 sm:space-y-4">
+                  {/* Verified Badge */}
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest-900/90 border border-gold-400/40 text-gold-300 text-xs sm:text-sm font-semibold backdrop-blur-md">
                     <ShieldCheck className="w-4 h-4 text-gold-400" />
                     <span>Khan Tours Nawabshah • Verified Travel Service</span>
                   </div>
 
-                  {/* Main Headline */}
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                  {/* Main Headline: min 24px on mobile */}
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
                     {slide.headline}
                   </h1>
 
-                  {/* Tagline */}
-                  <p className="text-sm sm:text-base md:text-lg text-gold-200 font-medium">
+                  {/* Tagline: min 16px on mobile */}
+                  <p className="text-base sm:text-lg md:text-xl text-gold-200 font-semibold">
                     {slide.tagline}
                   </p>
 
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm md:text-base text-gray-200/90 leading-relaxed max-w-xl">
+                  {/* Description: min 16px on mobile for optimal legibility */}
+                  <p className="text-sm sm:text-base text-gray-200 leading-relaxed max-w-xl">
                     {slide.description}
                   </p>
 
-                  {/* Action Buttons */}
-                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                  {/* Stacked Full-Width CTAs on Mobile, Horizontal on Desktop */}
+                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
                     <a
                       href={generateWhatsAppLink({
                         packageTitle: slide.headline,
@@ -110,17 +110,17 @@ export default function HeroSlider() {
                       })}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg hover:shadow-green-900/50 transition-all duration-300 transform hover:-translate-y-0.5"
+                      className="whatsapp-btn w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-lg transition-all duration-300"
                     >
-                      <MessageCircle className="w-4 h-4 fill-white text-green-600" />
+                      <MessageCircle className="w-5 h-5 fill-current" />
                       <span>Plan Your Trip on WhatsApp</span>
                     </a>
 
                     <Link
                       href="/packages"
-                      className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300"
+                      className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base px-6 py-3.5 rounded-full backdrop-blur-md border border-white/25 transition-all duration-300"
                     >
-                      <Compass className="w-4 h-4 text-gold-300" />
+                      <Compass className="w-5 h-5 text-gold-300" />
                       <span>Explore Tour Packages</span>
                     </Link>
                   </div>
@@ -133,17 +133,17 @@ export default function HeroSlider() {
         {/* Carousel Navigation Arrows */}
         <button
           onClick={prevSlide}
-          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-forest-900/80 text-white backdrop-blur-md border border-white/10 transition-colors focus:outline-none"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-full bg-black/40 hover:bg-forest-900/80 text-white backdrop-blur-md border border-white/10 transition-colors focus:outline-none"
           aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-forest-900/80 text-white backdrop-blur-md border border-white/10 transition-colors focus:outline-none"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 min-w-[44px] min-h-[44px] w-11 h-11 flex items-center justify-center rounded-full bg-black/40 hover:bg-forest-900/80 text-white backdrop-blur-md border border-white/10 transition-colors focus:outline-none"
           aria-label="Next Slide"
         >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Slide Indicators */}

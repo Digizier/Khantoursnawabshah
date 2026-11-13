@@ -54,7 +54,7 @@ export default function MobileBubbleDock() {
     <div className="fixed bottom-3 inset-x-0 z-40 flex justify-center px-4 lg:hidden pointer-events-none transition-all duration-300">
       <nav
         aria-label="Mobile Bottom Navigation"
-        className="pointer-events-auto flex items-center justify-around gap-1 px-3 py-2 bg-forest-950/85 backdrop-blur-xl border border-forest-700/60 shadow-floating rounded-full max-w-sm w-full transition-transform duration-300"
+        className="pointer-events-auto flex items-center justify-around gap-1 px-3 py-2 bg-forest-950/90 backdrop-blur-xl border border-forest-700/60 shadow-floating rounded-full max-w-sm w-full transition-transform duration-300"
       >
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -67,16 +67,16 @@ export default function MobileBubbleDock() {
                 href={item.href}
                 target={isHighlight ? "_blank" : undefined}
                 rel={isHighlight ? "noopener noreferrer" : undefined}
-                className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-all duration-200 ${
+                className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-all duration-200 ${
                   isHighlight
-                    ? "bg-green-600 text-white shadow-sm hover:bg-green-500 scale-105"
+                    ? "whatsapp-btn bg-[#25D366] text-white shadow-sm hover:bg-[#20ba5a] scale-105"
                     : "text-gray-300 hover:text-gold-300"
                 }`}
                 aria-label={item.label}
               >
                 <Icon
                   className={`w-5 h-5 ${
-                    isHighlight ? "fill-white text-green-600" : ""
+                    isHighlight ? "fill-white text-[#25D366]" : ""
                   }`}
                 />
                 <span className="text-[10px] font-medium tracking-tight mt-0.5">
@@ -90,7 +90,7 @@ export default function MobileBubbleDock() {
             <Link
               key={item.label}
               href={item.href}
-              className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-all duration-200 ${
+              className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-all duration-200 ${
                 item.isActive
                   ? "text-gold-300 bg-forest-800/80 font-bold"
                   : "text-gray-300 hover:text-gold-300"
