@@ -16,45 +16,14 @@ import {
   ExternalLink,
 } from "lucide-react";
 import HeroSlider from "@/components/HeroSlider";
+import TopTrustStripMarquee from "@/components/TopTrustStripMarquee";
 import DestinationsMarquee from "@/components/DestinationsMarquee";
 import PackageCard from "@/components/PackageCard";
 import InquiryForm from "@/components/InquiryForm";
 import ReviewsMarquee from "@/components/ReviewsMarquee";
+import TrustBenefitsMarquee from "@/components/TrustBenefitsMarquee";
 import { TOUR_PACKAGES } from "@/data/tours";
 import { generateWhatsAppLink, DISPLAY_WHATSAPP } from "@/lib/whatsapp";
-
-const TRUST_BENEFITS = [
-  {
-    icon: MapPin,
-    title: "Convenient Departures from Sindh",
-    desc: "Board seamlessly from Nawabshah with coordinated transit through Sindh and motorway connections to Northern gateways without stressful changes.",
-  },
-  {
-    icon: Users,
-    title: "Family Privacy & Decent Hotels",
-    desc: "We strictly partner with reputable, secure hotels where families and couples enjoy complete privacy, hot water, and pleasant dining environments.",
-  },
-  {
-    icon: Car,
-    title: "Comfortable Mountain Fleet",
-    desc: "Travel in AC Saloon Coasters, Toyota Grand Cabins, and dedicated 4x4 mountain jeeps handled by drivers seasoned in high-altitude routes.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Direct On-Ground Guidance",
-    desc: "Our tours are supervised directly by Mohammed Murad Khan, ensuring that every checkpoint, mountain pass, and hotel check-in goes smoothly.",
-  },
-  {
-    icon: Compass,
-    title: "Customized Itinerary Planning",
-    desc: "Need extra days in Hunza? Want a honeymoon retreat in Kashmir? We customize daily pacing, private vehicles, and hotel tiers to your exact liking.",
-  },
-  {
-    icon: Phone,
-    title: "24/7 Road & Emergency Support",
-    desc: "Mountain weather and road conditions can change. Our continuous coordination ensures alternate routes, safe pauses, and clear updates at all times.",
-  },
-];
 
 const REVIEWS_DATA = [
   {
@@ -81,42 +50,16 @@ const REVIEWS_DATA = [
 ];
 
 export default function HomePage() {
-  // Only 2 featured tour packages on the homepage as requested
-  const featuredPackages = TOUR_PACKAGES.filter((p) => p.featured).slice(0, 2);
-
-  // Duplicated benefits list for seamless continuous marquee loop
-  const duplicatedBenefits = [...TRUST_BENEFITS, ...TRUST_BENEFITS];
+  // All featured tour packages shown with full prominent images and details
+  const featuredPackages = TOUR_PACKAGES.filter((p) => p.featured);
 
   return (
     <div className="w-full">
       {/* 1. Hero Section with Carousel */}
       <HeroSlider />
 
-      {/* 2. Top Trust Indicators Strip: Continuous Left-to-Right Moving Marquee */}
-      <section className="bg-forest-900 border-b border-forest-800 text-gold-200 py-2.5 sm:py-3 overflow-hidden select-none">
-        <div className="marquee-track-fast flex items-center gap-8 sm:gap-12 px-4 text-xs sm:text-sm font-medium">
-          {[1, 2, 3].map((_, setIdx) => (
-            <React.Fragment key={setIdx}>
-              <div className="flex items-center gap-2 whitespace-nowrap">
-                <ShieldCheck className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <span>Nawabshah Departure & Pickups</span>
-              </div>
-              <div className="flex items-center gap-2 whitespace-nowrap">
-                <Users className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <span>Family-Friendly Accommodations</span>
-              </div>
-              <div className="flex items-center gap-2 whitespace-nowrap">
-                <Car className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <span>Comfortable AC Mountain Fleet</span>
-              </div>
-              <div className="flex items-center gap-2 whitespace-nowrap">
-                <Compass className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <span>Experienced On-Ground Tour Guides</span>
-              </div>
-            </React.Fragment>
-          ))}
-        </div>
-      </section>
+      {/* 2. Top Trust Indicators Strip: Continuous Left-to-Right Moving Marquee (Touch-Draggable) */}
+      <TopTrustStripMarquee />
 
       {/* 3. Top Northern Destinations Section (Touch-Draggable + Continuous Auto-scroll) */}
       <section className="py-8 sm:py-12 bg-ivory-100 overflow-hidden">
@@ -147,7 +90,7 @@ export default function HomePage() {
         <DestinationsMarquee />
       </section>
 
-      {/* 4. Featured Tour Packages (Exactly 2 Packages on the Screen Page) */}
+      {/* 4. Featured Tour Packages (All Featured Packages, Prominent Images & Details) */}
       <section className="py-8 sm:py-12 bg-white border-t border-b border-gray-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-5 sm:mb-8">
@@ -171,8 +114,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Cards Grid: Exactly 2 packages visible on mobile screen without cramping, 2 columns on desktop */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch">
+          {/* Cards Grid: Clean responsive grid showing all featured packages with full images & details */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
             {featuredPackages.map((tour) => (
               <PackageCard key={tour.id} tour={tour} />
             ))}
@@ -205,7 +148,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Trust Section: "Trusted Northern Tour Experience from Sindh" */}
+      {/* 5. Trust Section: "Trusted Northern Tour Experience from Sindh" (Touch-Draggable & Continuous Auto-scroll) */}
       <section className="py-8 sm:py-12 bg-ivory-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <div className="text-center max-w-2xl mx-auto">
@@ -221,30 +164,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Continuous Left-to-Right Moving Track with 1.5 visible boxes on mobile screen */}
-        <div className="w-full relative overflow-hidden py-2">
-          <div className="marquee-track-fast flex gap-4 sm:gap-6 px-4">
-            {duplicatedBenefits.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={`${item.title}-${idx}`}
-                  className="w-[72vw] sm:w-[45vw] md:w-80 flex-shrink-0 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/90 shadow-subtle hover:border-gold-400/60 transition-all flex flex-col justify-start"
-                >
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-forest-50 text-forest-800 flex items-center justify-center mb-3 flex-shrink-0">
-                    <Icon className="w-5 h-5 text-forest-700" />
-                  </div>
-                  <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-1.5 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        {/* Hand-Draggable and Continuously Auto-Scrolling Track */}
+        <TrustBenefitsMarquee />
       </section>
 
       {/* 6. Travel Services Section */}

@@ -13,34 +13,35 @@
 }
 
 /* =========================================================================
-   GENTLE & ELEGANT HEADER WHATSAPP ROTATE & SCALE ANIMATION (ONLY FOR HEADER)
-   Smooth, tasteful rotate & breathing pulse - not too fast, not too extreme
+   VIBRANT & ELEGANT HEADER WHATSAPP ROTATE & PULSE ANIMATION (ONLY FOR HEADER)
+   Clearly visible, attractive rotate & breathing pulse - active & continuous
    ========================================================================= */
-@keyframes headerWaGentle {
+@keyframes headerWaPulse {
   0%, 100% {
     transform: scale(1) rotate(0deg);
   }
-  15% {
-    transform: scale(1.04) rotate(-4deg);
+  20% {
+    transform: scale(1.1) rotate(-10deg);
   }
-  30% {
-    transform: scale(1.05) rotate(4deg);
-  }
-  45% {
-    transform: scale(1.03) rotate(-2.5deg);
+  40% {
+    transform: scale(1.12) rotate(10deg);
   }
   60% {
-    transform: scale(1.01) rotate(2deg);
+    transform: scale(1.06) rotate(-6deg);
   }
-  75%, 100% {
-    transform: scale(1) rotate(0deg);
+  80% {
+    transform: scale(1.03) rotate(6deg);
   }
 }
 
 .header-wa-btn {
   display: inline-flex !important;
-  animation: headerWaGentle 3s ease-in-out infinite !important;
+  animation: headerWaPulse 2.2s ease-in-out infinite !important;
   transform-origin: center center !important;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 /* Shimmer shine effect for header button */
@@ -76,27 +77,6 @@
   }
 }
 
-/* Fast marquee for trust indicator strip */
-@keyframes marqueeLeftToRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-}
-
-.marquee-track-fast {
-  display: flex !important;
-  width: max-content !important;
-  animation: marqueeLeftToRight 22s linear infinite !important;
-  will-change: transform;
-}
-
-.marquee-track-fast:hover {
-  animation-play-state: paused !important;
-}
-
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -104,14 +84,5 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .header-wa-btn {
-    animation: none !important;
-  }
-  .marquee-track-fast {
-    animation: none !important;
   }
 }
