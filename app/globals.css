@@ -12,25 +12,74 @@
   }
 }
 
-/* WhatsApp Pulse Animation */
-@keyframes waPulse {
+/* Super Attractive WhatsApp Rotate + Scale + Glow Animation */
+@keyframes waAttractive {
   0% {
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
   }
-  50% {
-    transform: scale(1.08);
+  15% {
+    transform: scale(1.08) rotate(-8deg);
+  }
+  30% {
+    transform: scale(1.14) rotate(8deg);
+    box-shadow: 0 0 18px 4px rgba(37, 211, 102, 0.45);
+  }
+  45% {
+    transform: scale(1.08) rotate(-4deg);
+  }
+  60% {
+    transform: scale(1.04) rotate(4deg);
+  }
+  75% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 }
 
-.whatsapp-btn {
-  animation: waPulse 1.5s ease-in-out infinite;
+.whatsapp-btn,
+.whatsapp-attractive {
+  animation: waAttractive 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   transform-origin: center;
 }
 
-/* Infinite Destinations CSS Marquee: Left-to-Right & Right-to-Left Continuous Loops */
+/* Shimmer shine effect for attractive buttons */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: rotate(25deg);
+  animation: shineMove 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shineMove {
+  0% {
+    transform: translateX(-120%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(120%) rotate(25deg);
+  }
+}
+
+/* Infinite Marquee: Left-to-Right Continuous Loops */
 @keyframes marqueeScrollLTR {
   0% {
     transform: translateX(-50%);
@@ -40,15 +89,15 @@
   }
 }
 
-@keyframes marqueeScrollRTL {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* Fast marquee for trust indicator strip */
+.marquee-track-fast {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollLTR 22s linear infinite;
+  will-change: transform;
 }
 
+/* Normal smooth marquee for destinations & reviews */
 .marquee-track {
   display: flex;
   width: max-content;
@@ -56,9 +105,21 @@
   will-change: transform;
 }
 
+/* Slow continuous marquee for cards */
+.marquee-track-slow {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollLTR 45s linear infinite;
+  will-change: transform;
+}
+
 .marquee-track:hover,
 .marquee-track:active,
-.marquee-track:focus-within {
+.marquee-track:focus-within,
+.marquee-track-fast:hover,
+.marquee-track-fast:active,
+.marquee-track-slow:hover,
+.marquee-track-slow:active {
   animation-play-state: paused !important;
 }
 
@@ -85,10 +146,13 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .whatsapp-btn {
+  .whatsapp-btn,
+  .whatsapp-attractive {
     animation: none !important;
   }
-  .marquee-track {
+  .marquee-track,
+  .marquee-track-fast,
+  .marquee-track-slow {
     animation: none !important;
     overflow-x: auto;
   }

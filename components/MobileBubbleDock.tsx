@@ -69,7 +69,7 @@ export default function MobileBubbleDock() {
                 rel={isHighlight ? "noopener noreferrer" : undefined}
                 className={`min-w-[44px] min-h-[44px] flex flex-col items-center justify-center py-1 px-2.5 rounded-full transition-all duration-200 ${
                   isHighlight
-                    ? "whatsapp-btn bg-[#25D366] text-white shadow-sm hover:bg-[#20ba5a] scale-105"
+                    ? "whatsapp-btn shine-effect bg-[#25D366] text-white shadow-sm hover:bg-[#20ba5a] scale-105 border border-green-300/30"
                     : "text-gray-300 hover:text-gold-300"
                 }`}
                 aria-label={item.label}

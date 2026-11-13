@@ -110,7 +110,7 @@ export default function HeroSlider() {
                       })}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="whatsapp-btn w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-lg transition-all duration-300"
+                      className="whatsapp-btn shine-effect w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-lg transition-all duration-300 border border-green-300/40"
                     >
                       <MessageCircle className="w-5 h-5 fill-current" />
                       <span>Plan Your Trip on WhatsApp</span>
