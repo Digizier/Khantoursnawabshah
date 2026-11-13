@@ -17,14 +17,14 @@ export default function PackageCard({ tour }: PackageCardProps) {
   });
 
   return (
-    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200/90 hover:border-gold-400/70 shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col h-full">
-      {/* Image Container with 16:9 Aspect Ratio */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-forest-950">
+    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200/90 hover:border-gold-400/70 shadow-subtle hover:shadow-card transition-all duration-300 flex flex-row sm:flex-col h-auto sm:h-full">
+      {/* Media: Image on left on mobile (w-36), full-width 16:9 on tablet/desktop */}
+      <div className="relative w-36 sm:w-full aspect-[4/3] sm:aspect-[16/9] flex-shrink-0 overflow-hidden bg-forest-950">
         <Image
           src={tour.image}
           alt={tour.title}
           fill
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 144px, (max-width: 1024px) 50vw, 25vw"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/20 to-black/20" />
@@ -47,20 +47,20 @@ export default function PackageCard({ tour }: PackageCardProps) {
         </div>
       </div>
 
-      {/* Card Body: Optimized for 2-column mobile & 4-column desktop */}
-      <div className="p-2.5 sm:p-4 flex-1 flex flex-col justify-between space-y-2">
-        <div className="space-y-1 sm:space-y-2">
+      {/* Card Body: Compact on mobile so 2 cards fit on screen, spacious on desktop */}
+      <div className="p-2.5 sm:p-4 flex-1 flex flex-col justify-between space-y-1.5 sm:space-y-3 min-w-0">
+        <div className="space-y-1">
           <h3 className="font-bold text-xs sm:text-sm md:text-base text-gray-900 line-clamp-2 group-hover:text-forest-700 transition-colors leading-snug">
             <Link href={`/packages/${tour.slug}`}>
               {tour.title}
             </Link>
           </h3>
 
-          <p className="text-[10px] sm:text-xs text-gray-600 line-clamp-2 leading-relaxed hidden sm:block">
+          <p className="text-[11px] sm:text-xs text-gray-600 line-clamp-1 sm:line-clamp-2 leading-relaxed">
             {tour.summary}
           </p>
 
-          {/* Quick Highlights (Desktop only to keep 2-column mobile compact) */}
+          {/* Quick Highlights (Desktop only) */}
           <ul className="pt-1 space-y-1 hidden sm:block">
             {tour.highlights.slice(0, 2).map((h, i) => (
               <li
@@ -74,11 +74,11 @@ export default function PackageCard({ tour }: PackageCardProps) {
           </ul>
         </div>
 
-        {/* Card Footer CTAs: 2 buttons fitting neatly in 2 columns */}
-        <div className="pt-2 border-t border-gray-100 flex flex-col sm:flex-row items-stretch sm:items-center gap-1 sm:gap-1.5">
+        {/* Card Footer CTAs: Side-by-side buttons */}
+        <div className="pt-1.5 sm:pt-2 border-t border-gray-100 flex items-center gap-1.5 sm:gap-2">
           <Link
             href={`/packages/${tour.slug}`}
-            className="w-full sm:flex-1 py-1.5 px-1 sm:py-2 sm:px-2.5 text-[10px] sm:text-xs font-semibold text-center text-forest-900 bg-forest-50 hover:bg-forest-100 rounded-lg transition-colors flex items-center justify-center gap-0.5 border border-forest-100"
+            className="flex-1 py-1.5 px-2 sm:py-2 sm:px-3 text-[10px] sm:text-xs font-semibold text-center text-forest-900 bg-forest-50 hover:bg-forest-100 rounded-lg transition-colors flex items-center justify-center gap-0.5 border border-forest-100"
           >
             <span>Details</span>
             <ChevronRight className="w-3 h-3" />
@@ -87,7 +87,7 @@ export default function PackageCard({ tour }: PackageCardProps) {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:flex-1 py-1.5 px-1 sm:py-2 sm:px-2.5 text-[10px] sm:text-xs font-semibold text-center text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-lg transition-colors shadow-sm flex items-center justify-center gap-1"
+            className="whatsapp-btn shine-effect flex-1 py-1.5 px-2 sm:py-2 sm:px-3 text-[10px] sm:text-xs font-semibold text-center text-white bg-[#25D366] hover:bg-[#20ba5a] rounded-lg transition-colors shadow-sm flex items-center justify-center gap-1 border border-green-300/30"
           >
             <MessageCircle className="w-3 h-3 fill-current" />
             <span>WhatsApp</span>

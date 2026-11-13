@@ -12,38 +12,44 @@
   }
 }
 
-/* Super Attractive WhatsApp Rotate + Scale + Glow Animation */
-@keyframes waAttractive {
-  0% {
+/* =========================================================================
+   SUPER ATTRACTIVE WHATSAPP VIBRATING / WIGGLE / ROTATE & SCALE ANIMATION
+   ========================================================================= */
+@keyframes waWigglePulse {
+  0%, 100% {
     transform: scale(1) rotate(0deg);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
   }
-  15% {
-    transform: scale(1.08) rotate(-8deg);
+  8% {
+    transform: scale(1.15) rotate(-16deg);
   }
-  30% {
-    transform: scale(1.14) rotate(8deg);
-    box-shadow: 0 0 18px 4px rgba(37, 211, 102, 0.45);
+  16% {
+    transform: scale(1.18) rotate(16deg);
+    box-shadow: 0 0 20px 6px rgba(37, 211, 102, 0.5);
   }
-  45% {
-    transform: scale(1.08) rotate(-4deg);
+  24% {
+    transform: scale(1.15) rotate(-14deg);
   }
-  60% {
+  32% {
+    transform: scale(1.12) rotate(12deg);
+  }
+  40% {
+    transform: scale(1.08) rotate(-6deg);
+  }
+  48% {
     transform: scale(1.04) rotate(4deg);
   }
-  75% {
+  56% {
     transform: scale(1) rotate(0deg);
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
   }
 }
 
 .whatsapp-btn,
 .whatsapp-attractive {
-  animation: waAttractive 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  transform-origin: center;
+  display: inline-flex !important;
+  animation: waWigglePulse 2s cubic-bezier(0.25, 1, 0.5, 1) infinite !important;
+  transform-origin: center center !important;
 }
 
 /* Shimmer shine effect for attractive buttons */
@@ -55,18 +61,18 @@
 .shine-effect::after {
   content: "";
   position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 220%;
-  height: 220%;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background: linear-gradient(
     60deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.45) 50%,
     transparent 70%
   );
   transform: rotate(25deg);
-  animation: shineMove 3s infinite;
+  animation: shineMove 2.6s infinite;
   pointer-events: none;
 }
 
@@ -79,8 +85,10 @@
   }
 }
 
-/* Infinite Marquee: Left-to-Right Continuous Loops */
-@keyframes marqueeScrollLTR {
+/* =========================================================================
+   CONTINUOUS LEFT-TO-RIGHT & RIGHT-TO-LEFT MARQUEE ANIMATIONS
+   ========================================================================= */
+@keyframes marqueeLeftToRight {
   0% {
     transform: translateX(-50%);
   }
@@ -89,71 +97,54 @@
   }
 }
 
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* Fast marquee for trust indicator strip */
 .marquee-track-fast {
-  display: flex;
-  width: max-content;
-  animation: marqueeScrollLTR 22s linear infinite;
+  display: flex !important;
+  width: max-content !important;
+  animation: marqueeLeftToRight 22s linear infinite !important;
   will-change: transform;
 }
 
-/* Normal smooth marquee for destinations & reviews */
+/* Smooth continuous marquee for destinations */
 .marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marqueeScrollLTR 35s linear infinite;
+  display: flex !important;
+  width: max-content !important;
+  animation: marqueeLeftToRight 28s linear infinite !important;
   will-change: transform;
 }
 
-/* Slow continuous marquee for cards */
+/* Smooth marquee for benefits and reviews */
 .marquee-track-slow {
-  display: flex;
-  width: max-content;
-  animation: marqueeScrollLTR 45s linear infinite;
+  display: flex !important;
+  width: max-content !important;
+  animation: marqueeLeftToRight 32s linear infinite !important;
   will-change: transform;
 }
 
-.marquee-track:hover,
-.marquee-track:active,
-.marquee-track:focus-within,
-.marquee-track-fast:hover,
-.marquee-track-fast:active,
-.marquee-track-slow:hover,
-.marquee-track-slow:active {
-  animation-play-state: paused !important;
+/* ONLY pause on mouse hover on desktop devices so mobile never freezes */
+@media (hover: hover) and (pointer: fine) {
+  .marquee-track:hover,
+  .marquee-track-fast:hover,
+  .marquee-track-slow:hover {
+    animation-play-state: paused !important;
+  }
 }
 
 @layer utilities {
-  /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .whatsapp-btn,
-  .whatsapp-attractive {
-    animation: none !important;
-  }
-  .marquee-track,
-  .marquee-track-fast,
-  .marquee-track-slow {
-    animation: none !important;
-    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

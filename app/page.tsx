@@ -171,8 +171,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Cards Grid: In one row see 2 packages on mobile, 4 on desktop */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 items-stretch">
+          {/* Cards Grid: 2 packages clearly visible on mobile screen without squishing, 4 on desktop */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 items-stretch">
             {featuredPackages.map((tour) => (
               <PackageCard key={tour.id} tour={tour} />
             ))}

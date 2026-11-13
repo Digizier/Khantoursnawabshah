@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 import { DESTINATIONS } from "@/data/destinations";
 
 export default function DestinationsMarquee() {
-  const [isPaused, setIsPaused] = useState(false);
-
   // Duplicate list to create a seamless infinite loop
   const duplicated = [...DESTINATIONS, ...DESTINATIONS];
 
@@ -21,17 +19,8 @@ export default function DestinationsMarquee() {
       <div className="hidden sm:block absolute left-0 inset-y-0 w-12 bg-gradient-to-r from-ivory-100 to-transparent z-10 pointer-events-none" />
       <div className="hidden sm:block absolute right-0 inset-y-0 w-12 bg-gradient-to-l from-ivory-100 to-transparent z-10 pointer-events-none" />
 
-      {/* Infinite Scrolling Track moving left to right slowly */}
-      <div
-        className="marquee-track-slow flex gap-3 sm:gap-5 px-3"
-        style={{
-          animationPlayState: isPaused ? "paused" : undefined,
-        }}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
+      {/* Pure CSS Infinite Scrolling Track moving left to right continuously */}
+      <div className="marquee-track flex gap-3 sm:gap-5 px-3">
         {duplicated.map((dest, idx) => (
           <Link
             key={`${dest.id}-${idx}`}
