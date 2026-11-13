@@ -267,14 +267,12 @@ export default async function PackageDetailPage({ params }: PageProps) {
                 </div>
               </div>
 
-              {/* Booking Form Card */}
-              <div className="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-subtle">
-                <h4 className="text-sm font-bold text-gray-900 mb-2">
-                  Send Booking Request
-                </h4>
+              {/* Booking Form Card in Sidebar */}
+              <div className="w-full">
                 <InquiryForm
                   defaultDestination={tour.destination}
                   defaultPackage={tour.title}
+                  compact={true}
                 />
               </div>
             </div>

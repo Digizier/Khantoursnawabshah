@@ -8,6 +8,8 @@ export const CALL_NUMBERS = [
 
 export interface WhatsAppInquiryParams {
   name?: string;
+  phone?: string;
+  email?: string;
   packageTitle?: string;
   destination?: string;
   category?: string;
@@ -50,4 +52,64 @@ export function generateWhatsAppLink(params?: WhatsAppInquiryParams): string {
   text += "\nPlease share complete itinerary details, vehicle information, and availability. Thank you!";
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+/**
+ * Formats a high-converting, professional WhatsApp booking inquiry template
+ * using WhatsApp Markdown: Bold (*), Italics (_), and Blockquotes (>)
+ */
+export function generateFormWhatsAppLink(params: WhatsAppInquiryParams): string {
+  const lines: string[] = [
+    "*✨ NEW TOUR BOOKING INQUIRY — KHAN TOURS NAWABSHAH*",
+    "_Explore the Nature With Us!_",
+    "━━━━━━━━━━━━━━━━━━━━━━",
+    "",
+    "*👤 CUSTOMER DETAILS:*",
+    `> *Full Name:* ${params.name || "Valued Traveler"}`,
+    `> *WhatsApp / Mobile:* ${params.phone || "Not provided"}`,
+  ];
+
+  if (params.email && params.email.trim()) {
+    lines.push(`> *Email Address:* ${params.email.trim()}`);
+  }
+
+  lines.push("");
+  lines.push("*🏔️ TOUR PREFERENCES:*");
+
+  if (params.packageTitle) {
+    lines.push(`> *Tour Package:* ${params.packageTitle}`);
+  }
+
+  lines.push(`> *Destination:* ${params.destination || "Northern Pakistan"}`);
+
+  if (params.category) {
+    lines.push(`> *Tour Category:* ${params.category}`);
+  }
+
+  if (params.travellers) {
+    lines.push(`> *Total Travelers:* ${params.travellers}`);
+  }
+
+  if (params.travelDate) {
+    lines.push(`> *Preferred Departure Date:* ${params.travelDate}`);
+  } else {
+    lines.push("> *Preferred Departure Date:* Flexible / To be finalized");
+  }
+
+  lines.push("");
+  lines.push("*📝 SPECIAL REQUIREMENTS / NOTES:*");
+
+  if (params.message && params.message.trim()) {
+    lines.push(`> _${params.message.trim()}_`);
+  } else {
+    lines.push("> _Standard package with comfortable AC transport and clean hotel accommodations._");
+  }
+
+  lines.push("");
+  lines.push("━━━━━━━━━━━━━━━━━━━━━━");
+  lines.push("_📍 Sent directly from official website: khantoursnawabshah.xyz_");
+  lines.push("_Please check availability and send customized pricing & itinerary details. Shukriya!_");
+
+  const fullText = lines.join("\n");
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(fullText)}`;
 }
