@@ -79,15 +79,6 @@ export default function Header() {
               <Phone className="w-3.5 h-3.5 text-gold-400" />
               <span>0300-8900025</span>
             </a>
-            <a
-              href={generateWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header-wa-btn shine-effect flex items-center gap-1.5 text-white bg-[#25D366] px-3.5 py-1 rounded-full text-xs font-semibold hover:bg-[#20ba5a] transition-all shadow-sm"
-            >
-              <MessageCircle className="w-3.5 h-3.5 fill-current" />
-              <span>WhatsApp Direct</span>
-            </a>
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBubbleDock from "@/components/MobileBubbleDock";
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import ScrollToTop from "@/components/ScrollToTop";
 import { UIProvider } from "@/context/UIContext";
 
@@ -146,7 +145,6 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <MobileBubbleDock />
-          <WhatsAppFloatingButton />
         </UIProvider>
       </body>
     </html>
