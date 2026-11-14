@@ -8,7 +8,7 @@ import { DESTINATIONS } from "@/data/destinations";
 export const metadata: Metadata = {
   title: "Destinations in Northern Pakistan | Khan Tours Nawabshah",
   description:
-    "Explore the top travel destinations of Northern Pakistan with Khan Tours Nawabshah: Hunza Valley, Skardu Baltistan, Azad Kashmir, Naran Kaghan, Swat, Astore, Minimarg, and Domail.",
+    "Explore the top travel destinations of Northern Pakistan with Khan Tours Nawabshah: Hunza Valley, Skardu Baltistan, Basho Valley, Azad Kashmir, Naran Kaghan, Swat, Astore, Minimarg, and Domail.",
 };
 
 export default function DestinationsPage() {
@@ -35,12 +35,12 @@ export default function DestinationsPage() {
             Explore Northern Destinations
           </h1>
           <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            From the high alpine passes of Babusar and Khunjerab to the peaceful waters of Attabad and Ratti Gali, plan your journey with Khan Tours.
+            From the high alpine passes of Babusar and Khunjerab to the peaceful waters of Attabad, Shangrila, and Basho Valley, plan your journey with Khan Tours.
           </p>
         </div>
       </section>
 
-      {/* Destinations Grid: 8 Major Valleys */}
+      {/* Destinations Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
           {DESTINATIONS.map((dest) => (

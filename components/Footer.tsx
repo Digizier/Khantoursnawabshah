@@ -137,6 +137,14 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
+                    href="/destinations/basho-valley"
+                    className="text-gray-400 hover:text-gold-300 transition-colors"
+                  >
+                    Basho Valley
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/destinations/azad-kashmir"
                     className="text-gray-400 hover:text-gold-300 transition-colors"
                   >

@@ -63,7 +63,7 @@ export default function CustomizedToursPage() {
                 <div>
                   <h4 className="text-sm font-bold text-gray-900">Choose Your Valleys</h4>
                   <p className="text-xs text-gray-600 mt-0.5">
-                    Select any combination: Hunza, Skardu, Neelum Valley, Naran, Swat, or Astore/Minimarg.
+                    Select any combination: Hunza, Skardu, Basho Valley, Neelum Valley, Naran, Swat, or Astore/Minimarg.
                   </p>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export default function CustomizedToursPage() {
                 <div>
                   <h4 className="text-sm font-bold text-gray-900">Select Your Transport</h4>
                   <p className="text-xs text-gray-600 mt-0.5">
-                    Dedicated Toyota Corolla, Prado, Hiace Grand Cabin, or 29-seater Saloon Coaster.
+                    Dedicated Toyota Corolla, Prado, Hiace Grand Cabin, or 29-seater Saloon Coaster (departing from Sindh or Islamabad pickup).
                   </p>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function CustomizedToursPage() {
                 <div>
                   <h4 className="text-sm font-bold text-gray-900">Set Your Dates & Hotels</h4>
                   <p className="text-xs text-gray-600 mt-0.5">
-                    Choose standard or luxury hotel categories with verified family privacy and mountain views.
+                    Choose standard or luxury hotel categories with verified family privacy, scenic river views, or Islamabad transit stays.
                   </p>
                 </div>
               </div>

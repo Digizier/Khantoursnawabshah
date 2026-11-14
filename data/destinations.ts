@@ -11,6 +11,8 @@ export interface Destination {
   attractions: string[];
   travelTips: string[];
   featured?: boolean;
+  video?: string;
+  gallery?: string[];
 }
 
 export const DESTINATIONS: Destination[] = [
@@ -64,6 +66,10 @@ export const DESTINATIONS: Destination[] = [
       "Bring sunblock and sunglasses for high-altitude desert sunlight.",
       "Respect local Balti traditions and heritage sites."
     ],
+    gallery: [
+      "/images/destinations/skardu-shangrila.webp",
+      "/images/destinations/shangrila-resort-gardens.webp"
+    ],
     featured: true,
   },
   {
@@ -105,6 +111,7 @@ export const DESTINATIONS: Destination[] = [
     altitude: "2,409 to 4,173 meters",
     attractions: [
       "Lake Saif-ul-Malook with Malika Parbat Peak",
+      "Kiwai Waterfall (Kiwai Abshaar Chair-in-Water Experience)",
       "Babusar Pass Top (4,173 meters)",
       "Lulusar Lake Turquoise Waters",
       "Kunhar River Trout Fishing & Rafting",
@@ -116,6 +123,10 @@ export const DESTINATIONS: Destination[] = [
       "Hire authorized local 4x4 drivers for the Saif-ul-Malook jeep track.",
       "Early morning starts avoid highway congestion in peak season."
     ],
+    gallery: [
+      "/images/destinations/saif-ul-malook-lulusar-lake.webp",
+      "/images/destinations/kiwai-waterfall-naran.webp"
+    ],
     featured: true,
   },
   {
@@ -126,7 +137,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: "The Switzerland of the East",
     description:
       "Renowned for emerald pine slopes, roaring waterfalls, serene alpine lakes, and winter skiing at Malam Jabba. Explore Bahrain, Kalam Valley, Ushu Forest, and the breathtaking Mahodand Lake.",
-    image: "/images/destinations/mountain-waterfall-bridge.webp",
+    image: "/images/destinations/swat-kalam-valley.webp",
     bestTime: "All Year Round (Skiing in Winter, Sightseeing in Summer)",
     altitude: "991 to 2,865 meters",
     attractions: [
@@ -145,29 +156,67 @@ export const DESTINATIONS: Destination[] = [
     featured: true,
   },
   {
+    id: "basho",
+    slug: "basho-valley",
+    name: "Basho Valley (Skardu)",
+    region: "Gilgit-Baltistan",
+    tagline: "Untamed Pine Wilderness & Pristine Mountain Streams",
+    description:
+      "An enchanting hidden valley situated near Skardu, renowned for its crystal-clear cold glacial streams, iconic wooden suspension bridges, dense evergreen forests, and serene alpine meadows. A must-visit eco-tourism gem of Baltistan.",
+    image: "/images/destinations/basho-valley-skardu.webp",
+    bestTime: "May to October",
+    altitude: "2,680 meters (8,800 ft)",
+    attractions: [
+      "Basho Wooden Suspension Bridge & River Viewpoint",
+      "Basho Alpine Meadows & Evergreen Pine Forests",
+      "Crystal Clear Glacial Trout Streams",
+      "Traditional Log Cabins & Eco-Campsites",
+      "Majestic Panoramic Views of Karakoram Peaks",
+      "Stargazing and Peaceful Wilderness Treks"
+    ],
+    travelTips: [
+      "A sturdy 4x4 mountain jeep is essential for the ascent to Basho Valley.",
+      "Carry warm woolens as evening temperatures drop significantly.",
+      "Khan Tours provides licensed local mountain drivers and guided walks."
+    ],
+    video: "/videos/basho-valley-skardu.mp4",
+    gallery: [
+      "/images/destinations/basho-valley-skardu.webp",
+      "/images/destinations/basho-valley-bridge.webp",
+      "/images/destinations/basho-valley-forest.webp"
+    ],
+    featured: true,
+  },
+  {
     id: "astore",
     slug: "astore-valley",
-    name: "Astore Valley",
+    name: "Astore & Minimarg Valley",
     region: "Gilgit-Baltistan",
-    tagline: "Untouched Wilderness beneath Nanga Parbat",
+    tagline: "Wilderness of Rainbow Lake & Nanga Parbat Foothills",
     description:
-      "A pristine highland valley flanked by the mighty Nanga Parbat (8,126m). Astore leads to magical destinations like Rama Lake, Rama Meadows, and the wild high-altitude track toward Deosai Plains.",
-    image: "/images/destinations/kaghan-river-stream.webp",
+      "A pristine highland valley flanked by the mighty Nanga Parbat (8,126m) and leading to the fairytale waters of Rainbow Lake, Domail, and Minimarg. Features roaring rivers, untouched pine forests, and high mountain passes.",
+    image: "/images/destinations/rainbow-lake-astore.webp",
     bestTime: "June to September",
-    altitude: "2,600 meters",
+    altitude: "2,600 to 2,845 meters",
     attractions: [
+      "Rainbow Lake (Fairytale Alpine Lily Lake in Domail)",
+      "Minimarg Forest Valleys & Wooden Architecture",
       "Rama Meadows & Rama Alpine Lake",
       "Views of Nanga Parbat (Killer Mountain)",
-      "Tarishing Village Basecamp Trail",
-      "Chillum Chokki Gateway to Deosai",
+      "Burzil Pass Historic Mountain Ridge",
       "Crystal Clear Trout Streams"
     ],
     travelTips: [
+      "Entry to Minimarg/Domail requires administrative permit coordination (managed fully by Khan Tours).",
       "Rugged terrain requires experienced mountain drivers and high-clearance 4x4 vehicles.",
-      "Pack portable power banks as remote valley villages may have limited electricity.",
-      "Essential stop for nature enthusiasts seeking tranquility away from crowd routes."
+      "Pack portable power banks and high-grade thermal clothing."
     ],
-    featured: false,
+    video: "/videos/rainbow-lake-domail.mp4",
+    gallery: [
+      "/images/destinations/rainbow-lake-astore.webp",
+      "/images/destinations/rainbow-lake-domail-portrait.webp"
+    ],
+    featured: true,
   },
   {
     id: "minimarg",
@@ -177,7 +226,7 @@ export const DESTINATIONS: Destination[] = [
     tagline: "The Hidden Fairytale of Rainbow Lake",
     description:
       "One of Pakistan's best-kept secrets near the Burzil Pass. A tranquil border valley surrounded by wildflower meadows, dense pine forests, and the magical wooden chalets of Rainbow Lake.",
-    image: "/images/destinations/taobutt-neelum-valley.webp",
+    image: "/images/destinations/rainbow-lake-astore.webp",
     bestTime: "July to September",
     altitude: "2,845 meters",
     attractions: [

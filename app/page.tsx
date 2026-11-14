@@ -80,7 +80,7 @@ export default function HomePage() {
               href="/destinations"
               className="mt-2.5 sm:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-forest-800 hover:text-gold-600 transition-colors"
             >
-              <span>View All 8 Valleys</span>
+              <span>View All Valleys</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -266,6 +266,43 @@ export default function HomePage() {
               <p className="text-[10px] text-gray-400 mt-0.5 hidden sm:block">
                 Coasters & safari jeeps
               </p>
+            </div>
+          </div>
+
+          {/* Additional Services (اضافی سہولیات - Islamabad Gateway Hotels & Vehicles) */}
+          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-forest-900/80 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-forest-900/60 border border-forest-800/80 flex items-start gap-3.5 hover:border-gold-400/40 transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-forest-800 text-gold-400 flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Hotel className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold tracking-wider uppercase text-gold-400 block">
+                  اضافی سہولت • Islamabad & Northern Hubs
+                </span>
+                <h4 className="text-sm sm:text-base font-bold text-white">
+                  معیاری ہوٹل بکنگ (Quality Hotel Reservations)
+                </h4>
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  اسلام آباد سے نادرن ایریاز (ناران، سوات، ہنزہ، سکردو، نیلم ویلی) کے لیے بہترین تصدیق شدہ فیملی ہوٹلز، ریزورٹس اور لگژری کمروں کی بکنگ۔
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 sm:p-5 rounded-2xl bg-forest-900/60 border border-forest-800/80 flex items-start gap-3.5 hover:border-gold-400/40 transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-forest-800 text-gold-400 flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Car className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold tracking-wider uppercase text-gold-400 block">
+                  اضافی سہولت • Islamabad & Sindh Fleet
+                </span>
+                <h4 className="text-sm sm:text-base font-bold text-white">
+                  گاڑیوں کی بکنگ (Dedicated Mountain Fleet Rentals)
+                </h4>
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  اسلام آباد اور سندھ سے مختلف سیاحتی مقامات کے لیے بااعتماد AC سیلون کوسٹرز، ٹویوٹا گرینڈ کیبنز، پراڈو اور 4x4 پہاڑی جیپوں کی بکنگ۔
+                </p>
+              </div>
             </div>
           </div>
         </div>

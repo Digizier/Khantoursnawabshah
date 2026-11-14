@@ -456,7 +456,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     categoryLabel: "Customized Tour",
     duration: "7 Days / 6 Nights",
     departureFrom: "Nawabshah / Sindh",
-    image: "/images/destinations/babusar-pass-snow.webp",
+    image: "/images/destinations/rainbow-lake-astore.webp",
     summary:
       "An exclusive off-the-beaten-path journey to Rama Lake beneath Nanga Parbat, Burzil Pass, and the fairytale chalets of Rainbow Lake in Minimarg.",
     overview:
@@ -539,7 +539,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     categoryLabel: "Family Tour",
     duration: "5 Days / 4 Nights",
     departureFrom: "Nawabshah / Sindh",
-    image: "/images/destinations/mountain-waterfall-bridge.webp",
+    image: "/images/destinations/swat-kalam-valley.webp",
     summary:
       "A quick and deeply refreshing family escape to the Switzerland of the East with smooth motorway access, Malam Jabba ski chairlift, and Kalam riversides.",
     overview:
@@ -597,6 +597,88 @@ export const TOUR_PACKAGES: TourPackage[] = [
     ],
     suitableFor: "Families, Couples, Senior Citizens",
     featured: false,
+  },
+  {
+    id: "basho-valley-skardu-expedition",
+    slug: "basho-valley-skardu-meadows-tour",
+    title: "Basho Valley, Shangrila & Skardu Wilderness Tour",
+    destination: "Basho Valley & Skardu",
+    destinationSlug: "basho-valley",
+    category: "group",
+    categoryLabel: "Adventure & Family",
+    duration: "8 Days / 7 Nights",
+    departureFrom: "Nawabshah / Sindh & Islamabad",
+    image: "/images/destinations/basho-valley-skardu.webp",
+    summary:
+      "Explore the untouched alpine pine forests of Basho Valley, the iconic Shangrila Resort, Katpana Cold Desert, and pristine glacial streams of Baltistan.",
+    overview:
+      "A thrilling yet family-comfortable expedition to the hidden jewel of Baltistan: Basho Valley. Walk across historic wooden suspension bridges, camp beneath towering pine ridges, relax by the serene Shangrila Resort and Lower Kachura Lake, and experience the golden sand dunes of Katpana Cold Desert.",
+    highlights: [
+      "4x4 mountain jeep safari up the scenic ascent to Basho Valley",
+      "Basho wooden suspension bridge and crystal-clear glacier stream walks",
+      "Authentic visit to Shangrila Resort & Lower Kachura Lake",
+      "Upper Kachura Lake boat ride and trout fish dining",
+      "Katpana Cold Desert dunes and sunset photo stop",
+      "Shigar Fort and ancient Balti historical heritage tour",
+      "Direct guidance by Mohammed Murad Khan and experienced Baltistan mountain team"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Departure from Nawabshah to Islamabad / Naran",
+        description: "Board comfortable AC mountain fleet from Nawabshah. Motorway transit to northern gateway with comfortable rest pauses."
+      },
+      {
+        day: 2,
+        title: "Karakoram Highway / Babusar Pass to Chilas / Jaglot",
+        description: "Scenic drive through high mountain corridors, passing the junction point of three great mountain ranges (Himalayas, Karakoram, Hindu Kush)."
+      },
+      {
+        day: 3,
+        title: "Drive into Skardu Valley & Shangrila Resort",
+        description: "Arrive in Skardu along the Indus River gorge. Visit the legendary Shangrila Resort (Lower Kachura Lake) and relax by the lakeside pagoda chalets."
+      },
+      {
+        day: 4,
+        title: "Full Day Basho Valley Jeep Safari & Pine Forest Walk",
+        description: "Board 4x4 jeeps for the rugged scenic climb into Basho Valley. Explore the iconic suspension bridge, pine forests, pristine cold streams, and tranquil alpine meadows. Evening return to hotel."
+      },
+      {
+        day: 5,
+        title: "Katpana Cold Desert, Shigar Valley & Fort",
+        description: "Explore the surreal high-altitude sand dunes of Katpana Desert. Visit historic Shigar Fort and local Balti handicraft bazaars."
+      },
+      {
+        day: 6,
+        title: "Upper Kachura Lake & Manthal Buddha Rock",
+        description: "Leisurely day at Upper Kachura Lake with optional boating and fresh trout lunch. Visit ancient Buddhist rock carvings."
+      },
+      {
+        day: 7,
+        title: "Return Drive towards Chilas / Besham",
+        description: "Commence return journey along the Karakoram Highway with scenic photo stops."
+      },
+      {
+        day: 8,
+        title: "Smooth Transit back to Nawabshah / Sindh",
+        description: "Comfortable motorway ride back home to Nawabshah with unforgettable memories of Basho Valley and Skardu."
+      }
+    ],
+    included: [
+      "Dedicated AC transport from Nawabshah/Islamabad and back",
+      "Specialized 4x4 jeeps for Basho Valley mountain track",
+      "Standard family & group hotel accommodations with hot water",
+      "Daily breakfast and traditional hot dinners",
+      "Fuel, toll taxes, checkpoint clearances, and expert driver allowances",
+      "On-ground tour guidance by Khan Tours management"
+    ],
+    excluded: [
+      "Boating or personal activity tickets",
+      "Lunches and extra beverages",
+      "Personal gear and shopping"
+    ],
+    suitableFor: "Families, Nature Lovers, Photographers, Groups",
+    featured: true,
   },
   {
     id: "custom-corporate-tour-planner",

@@ -13,6 +13,8 @@ import {
   Phone,
   ChevronRight,
   ArrowRight,
+  Video,
+  Camera,
 } from "lucide-react";
 import { DESTINATIONS, Destination } from "@/data/destinations";
 import { TOUR_PACKAGES } from "@/data/tours";
@@ -131,6 +133,59 @@ export default async function DestinationDetailPage({ params }: PageProps) {
                 {dest.description}
               </p>
             </div>
+
+            {/* Authentic On-Ground Video (if available) */}
+            {dest.video && (
+              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-subtle space-y-4">
+                <div className="flex items-center gap-2 border-l-4 border-forest-800 pl-3">
+                  <Video className="w-5 h-5 text-forest-800" />
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                    On-Ground Tour Video: {dest.name}
+                  </h2>
+                </div>
+                <div className="relative rounded-xl overflow-hidden bg-black aspect-video max-w-2xl mx-auto shadow-md">
+                  <video
+                    controls
+                    preload="metadata"
+                    className="w-full h-full object-contain"
+                  >
+                    <source src={dest.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <p className="text-xs text-center text-gray-500 italic">
+                  Authentic footage captured during Khan Tours on-ground northern expeditions.
+                </p>
+              </div>
+            )}
+
+            {/* Authentic Photo Gallery (if available) */}
+            {dest.gallery && dest.gallery.length > 0 && (
+              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-subtle space-y-4">
+                <div className="flex items-center gap-2 border-l-4 border-forest-800 pl-3">
+                  <Camera className="w-5 h-5 text-forest-800" />
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                    Authentic Captured Memories: {dest.name}
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {dest.gallery.map((imgSrc, idx) => (
+                    <div
+                      key={idx}
+                      className="relative h-48 sm:h-52 rounded-xl overflow-hidden border border-gray-100 group shadow-sm bg-gray-50"
+                    >
+                      <Image
+                        src={imgSrc}
+                        alt={`${dest.name} authentic tour scene ${idx + 1}`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Top Attractions Grid */}
             <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-subtle space-y-4">
